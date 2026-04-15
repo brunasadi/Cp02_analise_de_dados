@@ -613,7 +613,7 @@ with tabs[5]:
 
     with col2:
         cross2 = pd.crosstab(df_f["Lesao_Com_Medida"], df_f["Caso_Positivo"], normalize="index").round(4) * 100
-        cross2.index = ["Sem Medida", "Com Medida"]
+        cross2.index = cross2.index.map({0: "Sem Medida", 1: "Com Medida"})
         cross2.columns = ["Benigno %", "Maligno %"]
         fig2 = px.bar(
             cross2.reset_index().rename(columns={'index': 'Lesao_Com_Medida'}).melt(id_vars="Lesao_Com_Medida"),
