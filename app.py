@@ -483,31 +483,6 @@ with tabs[3]:
     else:
         st.info("Sem palavras exclusivas de malignos no filtro atual.")
 
-    st.markdown('<div class="section-title">Underscores e Dimensões por Diagnóstico</div>', unsafe_allow_html=True)
-    col1, col2 = st.columns(2)
-    with col1:
-        und = df_f.groupby("Caso_Positivo")[["underscore_indicacao","underscore_achados","underscore_analise"]].mean().round(3)
-        und.index = ["Benigno","Maligno"]
-        fig4 = px.bar(
-            und.reset_index().rename(columns={'index':'Caso_Positivo'}).melt(id_vars="Caso_Positivo"),
-            x="variable", y="value", color="Caso_Positivo", barmode="group",
-            template="plotly_white",
-            color_discrete_map={"Benigno":"#AD1457","Maligno":"#E91E8C"},
-            labels={"value":"Proporção","variable":"Campo","Caso_Positivo":"Diagnóstico"},
-            title="Proporção com '_' (data mascarada) por diagnóstico")
-        st.plotly_chart(fig4, use_container_width=True)
-    with col2:
-        dim = df_f.groupby("Caso_Positivo")[["dimensao_indicacao","dimensao_achados","dimensao_analise"]].mean().round(3)
-        dim.index = ["Benigno","Maligno"]
-        fig5 = px.bar(
-            dim.reset_index().rename(columns={'index':'Caso_Positivo'}).melt(id_vars="Caso_Positivo"),
-            x="variable", y="value", color="Caso_Positivo", barmode="group",
-            template="plotly_white",
-            color_discrete_map={"Benigno":"#AD1457","Maligno":"#E91E8C"},
-            labels={"value":"Proporção","variable":"Campo","Caso_Positivo":"Diagnóstico"},
-            title="Proporção com dimensão (cm/mm) por diagnóstico")
-        st.plotly_chart(fig5, use_container_width=True)
-
     st.markdown("""
     <div class="info-box">
     ✅ <b>Resposta 3:</b> Benignos usam <i>calcificações benignas</i> e <i>sem alterações</i>.
