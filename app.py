@@ -725,8 +725,3 @@ with tabs[7]:
 # RODAPÉ
 # ─────────────────────────────────────────────
 st.markdown("---")
-st.markdown(
-    "<small>Dashboard — Análise de Laudos Mamográficos | "
-    "Desenvolvido com Streamlit + Plotly + Pandas + SciPy</small>",
-    unsafe_allow_html=True,
-)
