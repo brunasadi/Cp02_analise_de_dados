@@ -39,7 +39,7 @@ from collections import Counter
 # ─────────────────────────────────────────────
 st.set_page_config(
     page_title="Análise de Laudos Mamográficos",
-    page_icon="🎀",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -140,7 +140,7 @@ def top_palavras(serie, n=25, stopwords=PALAVRAS_STOPPT):
 # ─────────────────────────────────────────────
 # SIDEBAR – FILTROS
 # ─────────────────────────────────────────────
-st.sidebar.title("🎀 Filtros")
+st.sidebar.title("Filtros")
 
 st.sidebar.markdown("**Motivo do Exame**")
 motivos     = df["Motivo_Exame"].unique().tolist()
@@ -168,7 +168,7 @@ if excl_poucas > 0:     df_f = df_f[df_f["Qtd_Palavras_Diagnostico"] >= excl_pou
 # ─────────────────────────────────────────────
 # TÍTULO
 # ─────────────────────────────────────────────
-st.title("🎀 Análise de Laudos Mamográficos")
+st.title("Análise de Laudos Mamográficos")
 st.markdown(
     f"Base filtrada: **{len(df_f):,} registros** de {len(df):,} totais  |  "
     f"Excluídos: **{len(df)-len(df_f):,}**"
@@ -651,7 +651,7 @@ with tabs[6]:
         med_chars = df_f[f"chars_{short}"].median()
         med_words = df_f[f"palavras_{short}"].median()
         with col:
-            st.markdown(f"##### 🎀 {nome}")
+            st.markdown(f"##### {nome}")
             st.markdown(f"""
             <div class="info-box">
             <b>Descrição:</b> {desc}<br>
@@ -726,7 +726,7 @@ with tabs[7]:
 # ─────────────────────────────────────────────
 st.markdown("---")
 st.markdown(
-    "<small>🎀 Dashboard — Análise de Laudos Mamográficos | "
+    "<small>Dashboard — Análise de Laudos Mamográficos | "
     "Desenvolvido com Streamlit + Plotly + Pandas + SciPy</small>",
     unsafe_allow_html=True,
 )
